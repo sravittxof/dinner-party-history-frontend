@@ -1,3 +1,4 @@
+const allPeople = document.getElementById("all-people");
 
 function allHistoricalGuests(){
     fetch("http://localhost:3000/guests")
@@ -6,29 +7,23 @@ function allHistoricalGuests(){
 }
 
 function getHistoricalPeople(data){
-    const allPeople = document.getElementById("all people");
     data.forEach(element => {
         const personElement = document.createElement("option");
+        personElement.value = element["name"];
         personElement.innerText = element["name"];
         allPeople.appendChild(personElement);
+
     });    
 }
 
 
-document.getElementById("all people").addEventListener("change", );
+allHistoricalGuests();
 
 
-function selectGuest(){
-    
+function selectGuest(input){
+    console.log(input.target.value);
+    return input.target.value;
 }
 
+allPeople.addEventListener("change", input => selectGuest(input))
 
-
-
-
-
-
-
-
-
-allHistoricalGuests();
