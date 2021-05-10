@@ -1,4 +1,5 @@
 const allPeople = document.getElementById("all-people");
+const guestList = document.getElementById("Guest List");
 
 function allHistoricalGuests(){
     fetch("http://localhost:3000/guests")
@@ -22,8 +23,14 @@ allHistoricalGuests();
 
 function selectGuest(input){
     console.log(input.target.value);
-    return input.target.value;
+    inviteSelectedGuest(input.target.value)
 }
 
 allPeople.addEventListener("change", input => selectGuest(input))
 
+
+function inviteSelectedGuest(guest){
+    guestListItem = document.createElement("li");
+    guestListItem.innerText = guest;
+    guestList.appendChild(guestListItem);
+}
