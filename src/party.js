@@ -13,6 +13,10 @@ class Party{
         PartyAPI.createParty();
     }
 
+    static indexParties(){
+
+    }
+
 }
 
 
@@ -34,6 +38,10 @@ class PartyAPI {
             console.log(json)
             Party.render(json);
         })
+    }
+
+    static indexParties(){
+        
     }
 
 }
