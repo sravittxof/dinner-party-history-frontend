@@ -5,6 +5,7 @@ const partyID = document.getElementById("party_id");
 const allPeople = document.getElementById("all-people");
 const guestList = document.getElementById("Guest List");
 
+const indexPartiesButton = document.getElementById("index_parties");
 const createPartyButton = document.getElementById("create_party");
 
 createPartyButton.addEventListener("click", Party.newParty);
