@@ -1,9 +1,18 @@
+const url = "http://localhost:3000";
+
+
+const partyID = document.getElementById("party_id");
 const allPeople = document.getElementById("all-people");
 const guestList = document.getElementById("Guest List");
-const guestIndexUrl = "http://localhost:3000/guests";
+
+const createPartyButton = document.getElementById("create_party");
+
+createPartyButton.addEventListener("click", Party.newParty);
+
+
 
 function allHistoricalGuests(){
-    fetch(guestIndexUrl)
+    fetch(`${url}/guests`)
     .then(resp => resp.json())
     .then(json => getHistoricalPeople(json))
 }
@@ -15,7 +24,7 @@ function getHistoricalPeople(data){
         personElement.innerText = element["name"];
         allPeople.append(personElement);
 
-    });    
+    });
 }
 
 allHistoricalGuests();
@@ -40,12 +49,19 @@ function inviteSelectedGuest(guest){
 }
 
 function saySomething(speaker){
-    getQuote(speaker);
+    fetchQuote(speaker);
 }
 
-function getQuote(speaker){
+function fetchQuote(speaker){
     guestId = speaker.target.value;
-    fetch("http://localhost:3000/quotes/" + `${guestId}`)
+    fetch(`http://localhost:3000/quotes/${guestId}`)
     .then(resp => resp.json())
-    .then(json => console.log(json)) 
+    .then(json => parseQuote(json))
 }
+
+function parseQuote(json){
+    console.log(json);
+    const quote = {id: json["id"], content: json["content"]};
+    return quote;
+}
+
