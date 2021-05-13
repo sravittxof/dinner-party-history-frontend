@@ -8,6 +8,7 @@ const guestList = document.getElementById("Guest List");
 const indexPartiesButton = document.getElementById("index_parties");
 const createPartyButton = document.getElementById("create_party");
 
+indexPartiesButton.addEventListener("click", Party.indexParties);
 createPartyButton.addEventListener("click", Party.newParty);
 
 
