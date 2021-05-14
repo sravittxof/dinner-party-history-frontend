@@ -12,6 +12,24 @@ indexPartiesButton.addEventListener("click", Party.indexParties);
 createPartyButton.addEventListener("click", Party.newParty);
 
 
+function clearHTMl(){
+    partyID.innerText = "";
+    // Can use removeChild for text? - it improves permoformance, according to the internet
+    
+    while (guestList.firstChild) {
+        guestList.removeChild(guestList.firstChild);
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 function allHistoricalGuests(){
     fetch(`${url}/guests`)
@@ -49,8 +67,8 @@ function inviteSelectedGuest(guest){
     guestList.appendChild(guestListItem);
     guestListItem.addEventListener("click", speaker => saySomething(speaker))
 }
-
 function saySomething(speaker){
+
     fetchQuote(speaker);
 }
 
